@@ -1,0 +1,24 @@
+{
+  "name": "devops-kindergarten-terminal-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "shell_executor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chihuahua-Muffin/devops-kindergarten-terminal-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chihuahua-Muffin/devops-kindergarten-terminal-server/issues"
+  },
+  "homepage": "https://github.com/Chihuahua-Muffin/devops-kindergarten-terminal-server#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "http": "0.0.1-security",
+    "socket.io": "^4.2.0"
+  }
+}
