@@ -2,10 +2,16 @@ const express = require("express");
 const app = express();
 const http = require("http");
 const server = http.createServer(app);
-const { Server } = require("socket.io");
-const io = new Server(server);
+const io = require("socket.io")(http, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+  },
+});
 
 const shell_executor = require("./shell_executor");
+
+app.use(require("cors")());
 
 // 접속한 유저의 id를 받아온다.
 let userid = 1;
