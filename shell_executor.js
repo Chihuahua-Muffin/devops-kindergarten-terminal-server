@@ -1,4 +1,4 @@
-const exec = require("child_process").exec;
+const execSync = require("child_process").execSync;
 
 // 유저가 넘긴 명령어 라인을 받아온다.
 async function shell(command) {
@@ -13,14 +13,15 @@ async function shell(command) {
 }
 
 module.exports.shell = (command) => {
-  let msg = "";
-  exec(command, (error, stdout, stderr) => {
-    if (error) {
-      console.log(`error: ${stderr}`);
-    }
-    console.log(`stdout : ${stdout}`);
-    console.error(`stderr : ${stderr}`);
-    msg = stdout;
-  });
-  return msg;
+  console.log("start");
+  const stdout = execSync(command).toString();
+  // execSync(command, (error, stdout, stderr) => {
+  //   if (error) {
+  //     console.log(`error: ${stderr}`);
+  //   }
+  //   console.log(`stdout : ${stdout}`);
+  //   msg = stdout;
+  // });
+  console.log(stdout);
+  return stdout;
 };
