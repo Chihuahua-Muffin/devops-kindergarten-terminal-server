@@ -1,0 +1,41 @@
+Connected at 3000
+user 1 connected
+user 1 connected
+user 1 connected
+user 1 disconnected
+user 1 disconnected
+user 1 disconnected
+user 1 connected
+user 1 disconnected
+user 1 connected
+user 1 connected
+user 1 disconnected
+user 1 disconnected
+user 1 connected
+user 1 connected
+user 1 connected
+user 1 disconnected
+user 1 disconnected
+user 1 disconnected
+user 1 connected
+user 1 connected
+user 1 connected
+user 1 connected
+start
+node:internal/validators:119
+    throw new ERR_INVALID_ARG_TYPE(name, 'string', value);
+    ^
+
+TypeError [ERR_INVALID_ARG_TYPE]: The "file" argument must be of type string. Received type function ([Function (anonymous)])
+    at new NodeError (node:internal/errors:371:5)
+    at validateString (node:internal/validators:119:11)
+    at normalizeSpawnArguments (node:child_process:503:3)
+    at spawnSync (node:child_process:771:8)
+    at execSync (node:child_process:895:15)
+    at Object.module.exports.shell (/home/ec2-user/devops-kindergarten-terminal-server/shell_executor.js:17:18)
+    at Socket.<anonymous> (/home/ec2-user/devops-kindergarten-terminal-server/index.js:29:37)
+    at Socket.emit (node:events:390:28)
+    at Socket.emitUntyped (/home/ec2-user/devops-kindergarten-terminal-server/node_modules/socket.io/dist/typed-events.js:69:22)
+    at /home/ec2-user/devops-kindergarten-terminal-server/node_modules/socket.io/dist/socket.js:428:39 {
+  code: 'ERR_INVALID_ARG_TYPE'
+}
