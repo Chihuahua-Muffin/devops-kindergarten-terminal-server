@@ -14,14 +14,14 @@ async function shell(command) {
 
 module.exports.shell = (command) => {
   console.log("start");
-  const stdout = execSync(command).toString();
-  // execSync(command, (error, stdout, stderr) => {
-  //   if (error) {
-  //     console.log(`error: ${stderr}`);
-  //   }
-  //   console.log(`stdout : ${stdout}`);
-  //   msg = stdout;
-  // });
+  let stdout = "";
+
+  try {
+    stdout = execSync(command).toString;
+  } catch (e) {
+    stdout = e;
+  }
+
   console.log(stdout);
   return stdout;
 };
