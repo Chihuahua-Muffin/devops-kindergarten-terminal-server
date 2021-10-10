@@ -13,15 +13,18 @@ async function shell(command) {
 }
 
 module.exports.shell = (command) => {
-  console.log("start");
-  let stdout = "";
+  let stdout;
+
+  // 새로운 프로세스를 실행시키는 걸 막는다.
+  if (command.split(" ")[0].includes("vi")) {
+    return `wrong access. you can't use \'vi\' command`;
+  }
 
   try {
     stdout = execSync(command).toString;
-  } catch (e) {
-    stdout = e;
+  } catch (ex) {
+    stdout = ex.stdout;
   }
 
-  console.log(stdout);
   return stdout;
 };
