@@ -1,34 +1,32 @@
 // const execSync = require("child_process").execSync;
 
+const { NodeSSH } = require("node-ssh");
+
+const ssh = new NodeSSH();
 const sshConfig = {
   host: "localhost",
   username: "ec2-user",
-  privateKey: "../myKey.pem",
+  privateKey: "./myKey.pem",
 };
 
 let userid = 1;
 
 module.exports = async (socket, req) => {
+  console.log(`user ${userid} connected`);
   await ssh.connect(sshConfig);
   const shellStream = await ssh.requestShell();
   socket.on("chat message", (msg) => {
-    const data = JSON.parse(msg);
-    shellStream.write(data.command.trim() + "\n");
+    const data = msg.toString;
+    shellStream.write(data + "\n");
   });
   // listener
   shellStream.on("data", (data) => {
-    const d = JSON.stringify({
-      jsonrpc: "2.0",
-      data: data.toString(),
-    });
-    socket.emit(d);
+    socket.emit(data);
+    console.log("data : " + data);
   });
   shellStream.stderr.on("data", (data) => {
-    const d = JSON.stringify({
-      jsonrpc: "1.0",
-      data: data.toString(),
-    });
-    socket.emit(d);
+    socket.emit(data);
+    console.log("err : " + data);
   });
   socket.on("disconnect", () => {
     console.log(`user ${userid} disconnected`);
